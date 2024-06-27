@@ -1,0 +1,14 @@
+var request1 = new XMLHttpRequest();
+request1.open("GET", "https://restcountries.com/v3.1/all", true);
+request1.send();
+request1.onload = function () 
+{
+    var data1 = request1.response;
+    var results = JSON.parse(data1);
+    var asianCountries = results.filter((country1) => {
+        return country1.region === 'Asia';
+    });
+    var asianCountryNames = asianCountries.map((country) => country.name.common);
+    console.log(asianCountryNames);
+    
+};

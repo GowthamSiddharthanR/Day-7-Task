@@ -1,0 +1,15 @@
+var request3 = new XMLHttpRequest();
+request3.open("GET", "https://restcountries.com/v3.1/all", true);
+request3.send();
+request3.onload = function () {
+    var data3 = request3.response;
+    var result4 = JSON.parse(data3);
+    result4.forEach((country) => {
+        var name = country.name.common;
+        var capital = Array.isArray(country.capital) ? country.capital[0] : "N/A";  
+        var flag = country.flags.png; 
+        console.log("Name: " + name);
+        console.log("Capital: " + capital);
+        console.log("Flag: " + flag); 
+    });
+};

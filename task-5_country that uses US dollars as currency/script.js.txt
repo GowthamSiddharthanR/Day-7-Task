@@ -1,0 +1,13 @@
+var request = new XMLHttpRequest();
+request.open("GET", "https://restcountries.com/v3.1/all", true);
+request.send();
+request.onload = () => {
+    var data = request.response;
+    var result = JSON.parse(data);
+    var USD = result.filter((country) => {
+        return country.currencies && country.currencies.USD;
+    });
+    var countryNames = USD.map((country) => country.name.common);
+    console.log("Countries that use US dollars as currency:");
+    console.log(countryNames);
+};

@@ -1,0 +1,13 @@
+var request2 = new XMLHttpRequest();
+request2.open("GET", "https://restcountries.com/v3.1/all", true);
+request2.send();
+request2.onload = function () {
+    var data2 = request2.response;
+    var result2 = JSON.parse(data2);
+    var countriesWithLowPopulation = result2.filter((country2) => {
+        return country2.population < 200000;
+    });
+    var countryNames = countriesWithLowPopulation.map((country) => country.name.common);
+    console.log(countryNames);
+    
+};
